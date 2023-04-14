@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% for teams in team_news %}
+    {% if teams.team|slugify == "liverpool" and teams.team.position == 1 %}
+        <img src="{% static 'images/liverpool.png' %}" alt="Liverpool">
+        <div class="carousel-caption">
+            <a href="{% url 'blogs:detail' teams.id %}">
+                <div id = featuredinfo>
+                    <h1>{{teams.title}}</h1>
+                    <p>{{teams.body}}</p>
+                </div>
+            </a>
+        </div>
+    {% elif teams.team|slugify == "manchester_united" and teams.team.position == 1 %}
+    <img src="{% static 'images/manu.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+
+    {% elif teams.team|slugify == "everton" and teams.team.position == 1 %}
+    <img src="{% static 'images/everton.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+    
+    {% elif teams.team|slugify == "man_city" and teams.team.position == 1 %}
+        <img src="{% static 'images/manchester-city.png' %}" class="img-fluid" alt="man_city">
+        <div class="carousel-caption">
+            <a href="{% url 'blogs:detail' teams.id %}">
+                <div id = featuredinfo>
+                    <h1>{{teams.title}}</h1>
+                    <p>{{teams.body}}</p>
+                </div>
+            </a>
+        </div>
+       
+    {% endif %}   
+{% endfor %}
+{% endblock %}
+
+{% block recent_blog %}
+
+{% for teams in team_news %}
+    {% if teams.team|slugify == "liverpool" and team_news.last == teams %}
+    <img src="{% static 'images/liverpool.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{ teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+
+    {% elif teams.team|slugify == "manchester_united" and team_news.last == teams %}
+    <img src="{% static 'images/manu.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{ teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+
+    {% elif teams.team|slugify == "everton" and team_news.last == teams %}
+    <img src="{% static 'images/everton.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+
+    {% elif teams.team|slugify == "man_city" and team_news.last == teams %}
+    
+    <img src="{% static 'images/manchester-city.png' %}" class="img-fluid" alt="Los Angeles">
+    <div class="carousel-caption">
+        <a href=" {% url 'blogs:detail' teams.id %}">
+            <div id = featuredinfo>
+                <h1>{{ teams.title}}</h1>
+                <p>{{teams.body}}</p>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+
+  

@@ -1,0 +1,17 @@
+<h1> Login as User</h1>
+
+<form action="{% url 'user_auth:authenticate_user' %}" method="post">
+    {% csrf_token %}
+
+    <label>Username</label>
+    <input type="text" name="username" placeholder="user" required>
+    <br/><br/>
+
+    <label>Password</label>
+    <input type="text" name="password" required>
+    <br/><br/>
+
+    <input type="submit" value="Login"/>
+</form>
+
+<a href="register_user/" class="rm">register</a>
