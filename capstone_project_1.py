@@ -1,12 +1,12 @@
 import sqlite3
 
-#add books
+# add books 
 def add_book():
     id1 = input("enter id of book: ")
     title = input("Enter title of book: ")
     author = input("Enter author of book: ")
     qty = input("Enter quantity of book: ")
-    # inserts inforamtion into the table in database
+    # inserts information into the table in database
     cursor.execute('''INSERT INTO books(id,Title,Author, Qty)
                  VALUES(?,?,?,?)''', (id1,title,author,qty))
     print("Books succefuly added")
@@ -29,7 +29,8 @@ def update_info(id):
             except Exception:
                 print("id already exists. Try again with different id.")
             break
-            
+        
+        # checks what field is changed and then adds to the field what the user wants 
         elif change =="title":
             change_field = input("Enter new title for book: ")
             cursor.execute('''UPDATE books SET Title = ? WHERE id = ? ''', (change_field,id))
