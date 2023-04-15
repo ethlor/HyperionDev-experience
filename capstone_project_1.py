@@ -66,9 +66,9 @@ def delete_book(id1):
 # display a selected record
 def display_book(id):
     cursor.execute('''SELECT id ,Title, Author,Qty FROM books  WHERE id = ?''',(id,))
-    for row in cursor:
+    for rows in cursor:
     # row[0] returns the first column in the query (id), row[1] returns the Tilte and row[2] returns the Author .
-        print('\nid:{}\tTitle:{}\tAuthor:{}\tQty:{}'.format(row[0],row[1],row[2],row[3]))
+        print('\nid:{}\tTitle:{}\tAuthor:{}\tQty:{}'.format(rows[0],rows[1],rows[2],rows[3]))
     
     db.commit()
 
